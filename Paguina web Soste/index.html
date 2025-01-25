@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EROSIÓN DEL SUELO EN EL CANTÓN COLTA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #a8e063, #56ab2f);
+            color: #333;
+        }
+
+        /* Sección del título */
+        header {
+            position: relative;
+            text-align: center;
+            color: white;
+            font-family: 'Times New Roman', serif;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            background: #000;
+        }
+
+        .carousel img {
+            min-width: 100%;
+            transition: transform 1s ease;
+        }
+
+        /* Botones interactivos */
+        .buttons-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            background: #4CAF50;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:nth-child(2n) {
+            background: #8BC34A;
+        }
+
+        .button:nth-child(3n) {
+            background: #FF9800;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .map-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        iframe {
+            width: 90%;
+            height: 400px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="carousel">
+            <!-- Agrega aquí las imágenes para el carrusel -->
+            <!-- Reemplaza "imagen1.jpg", "imagen2.jpg", y "imagen3.jpg" con las rutas a tus imágenes -->
+            <img src="1.PNG" alt="Imagen 1">
+         
+        </div>
+        <h1>EROSIÓN DEL SUELO EN EL CANTÓN COLTA</h1>
+    </header>
+
+    <section class="buttons-section">
+        <!-- Botones interactivos con imágenes modales -->
+        <!-- Reemplaza "histograma.jpg", "tabla_alertas.jpg", etc., con las rutas a tus imágenes -->
+        <button class="button" onclick="openModal('k.PNG')">HISTOGRAMA</button>
+        <button class="button" onclick="openModal('7.PNG')">TABLA DE ALERTAS DE LLUVIA</button>
+        <button class="button" onclick="openModal('8.PNG')">BASE DE DATOS METEOROLÓGICA</button>
+        <button class="button" onclick="openModal('9.PNG')">ALERTAS DE DESLAVES</button>
+        <button class="button" onclick="openModal('10.PNG')">BASE DE DATOS DE FUTUROS DESLAVES</button>
+        <button class="button" onclick="openModal('11.PNG')">FERTILIZANTES QUE EROSIONAN EL SUELO</button>
+    </section>
+
+    <section class="map-section">
+        <h2>Ubicación: Cantón Colta, Riobamba, Ecuador</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.1235478013238!2d-78.75921747115488!3d-1.6647855359646048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d3f2540a67afed%3A0xe5d1b2bb58adbb36!2sCant%C3%B3n%20Colta!5e0!3m2!1ses!2sec!4v1697209634703!5m2!1ses!2sec"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </section>
+
+    <div id="modal" class="modal">
+        <!-- Modal para mostrar imágenes -->
+        <img id="modal-image" src="" alt="Modal Image">
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        let index = 0;
+
+        function changeImage() {
+            index = (index + 1) % images.length;
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        setInterval(changeImage, 3000);
+
+        function openModal(imageSrc) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+        }
+
+        document.getElementById('modal').addEventListener('click', () => {
+            document.getElementById('modal').classList.remove('active');
+        });
+    </script>
+</body>
+</html>
